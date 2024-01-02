@@ -9,8 +9,8 @@ import (
 	"apiserver/util"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lexkong/log"
-	"github.com/lexkong/log/lager"
+	"github.com/gocoder2009/log-for-apiserver"
+	"github.com/gocoder2009/log-for-apiserver/lager"
 )
 
 // @Summary Update a user info by the user identifier
