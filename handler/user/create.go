@@ -27,6 +27,12 @@ func Create(c *gin.Context) {
 		return
 	}
 
+	// 在gopkg.in/go-playground/validator.v9这个包不能满足校验需求时，添加自己的校验逻辑
+	if err := r.checkParam(); err != nil {
+		SendResponse(c, err, nil)
+		return
+	}
+
 	u := model.UserModel{
 		Username: r.Username,
 		Password: r.Password,
@@ -55,4 +61,17 @@ func Create(c *gin.Context) {
 
 	// Show the user information.
 	SendResponse(c, nil, rsp)
+}
+
+// 实际开发过程中，gopkg.in/go-playground/validator.v9这个包可能不能满足校验需求，这时候可在程序中加入自己的校验逻辑
+func (r *CreateRequest) checkParam() error {
+	if r.Username == "" {
+		return errno.New(errno.ErrValidation, nil).Add("username is empty.")
+	}
+
+	if r.Password == "" {
+		return errno.New(errno.ErrValidation, nil).Add("password is empty.")
+	}
+
+	return nil
 }
