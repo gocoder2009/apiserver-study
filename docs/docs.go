@@ -140,6 +140,11 @@ const docTemplate = `{
         },
         "/v1/user": {
             "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "get users",
                 "consumes": [
                     "application/json"
@@ -175,7 +180,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "{\"code\":0,\"message\":\"OK\",\"data\":{\"totalCount\":1,\"userList\":[{\"id\":0,\"username\":\"admin\",\"random\":\"user 'admin' get random string 'EnqntiSig'\",\"password\":\"$2a$10$veGcArz47VGj7l9xN7g2iuT9TF21jLI1YGXarGzvARNdnt4inC9PG\",\"createdAt\":\"2018-05-28 00:25:33\",\"updatedAt\":\"2018-05-28 00:25:33\"}]}}",
+                        "description": "{\"code\":0,\"message\":\"OK\",\"data\":{\"totalCount\":1,\"userList\":[{\"id\":0,\"username\":\"admin\",\"random\":\"user\t'admin'\tget\trandom\tstring\t'EnqntiSig'\",\"password\":\"$2a$10$veGcArz47VGj7l9xN7g2iuT9TF21jLI1YGXarGzvARNdnt4inC9PG\",\"createdAt\":\"2018-05-28\t00:25:33\",\"updatedAt\":\"2018-05-28\t00:25:33\"}]}}",
                         "schema": {
                             "$ref": "#/definitions/user.SwaggerListResponse"
                         }
@@ -428,7 +433,7 @@ const docTemplate = `{
         }
     },
     "securityDefinitions": {
-        "": {
+        "JWT": {
             "description": "请在token字符串前加` + "`" + `Bearer+空格` + "`" + `",
             "type": "apiKey",
             "name": "Authorization",

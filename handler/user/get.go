@@ -10,6 +10,7 @@ import (
 
 // Get godoc
 //
+//	@Security		JWT
 //	@Summary		Get an user by the user identifier
 //	@Description	Get an user by username
 //	@Tags			user

@@ -11,6 +11,7 @@ import (
 
 // List godoc
 //
+//	@Security		JWT
 //	@Summary		List the users in the database
 //	@Description	get users
 //	@Tags			user

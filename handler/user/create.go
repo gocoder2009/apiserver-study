@@ -13,6 +13,7 @@ import (
 
 // Create godoc
 //
+//	@Security		JWT
 //	@Summary		Add new user to the database
 //	@Description	Add a new user
 //	@Tags			user

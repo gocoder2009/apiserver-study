@@ -15,6 +15,7 @@ import (
 
 // Update godoc
 //
+//	@Security		JWT
 //	@Summary		Update a user info by the user identifier
 //	@Description	Update a user by ID
 //	@Tags			user
