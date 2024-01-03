@@ -4,20 +4,38 @@ definitions:
     properties:
       code:
         type: integer
-      data:
-        type: object
+      data: {}
       message:
+        type: string
+    type: object
+  model.UserInfo:
+    properties:
+      createdAt:
+        type: string
+      id:
+        type: integer
+      password:
+        type: string
+      sayHello:
+        type: string
+      updatedAt:
+        type: string
+      username:
         type: string
     type: object
   model.UserModel:
     properties:
       password:
+        maxLength: 128
+        minLength: 5
         type: string
       username:
+        maxLength: 32
+        minLength: 1
         type: string
     required:
-    - username
     - password
+    - username
     type: object
   user.CreateRequest:
     properties:
@@ -46,7 +64,7 @@ definitions:
         type: integer
       userList:
         items:
-          type: '&{model UserInfo}'
+          $ref: '#/definitions/model.UserInfo'
         type: array
     type: object
 host: localhost:8080
@@ -56,7 +74,6 @@ info:
     name: lkong
     url: http://www.swagger.io/support
   description: apiserver demo
-  license: {}
   title: Apiserver Example API
   version: "1.0"
 paths:
@@ -68,13 +85,13 @@ paths:
         name: username
         required: true
         schema:
-          type: object
+          type: string
       - description: Password
         in: body
         name: password
         required: true
         schema:
-          type: object
+          type: string
       produces:
       - application/json
       responses:
@@ -155,7 +172,6 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/user.ListRequest'
-          type: object
       produces:
       - application/json
       responses:
@@ -165,7 +181,6 @@ paths:
             00:25:33","updatedAt":"2018-05-28 00:25:33"}]}}'
           schema:
             $ref: '#/definitions/user.SwaggerListResponse'
-            type: object
       summary: List the users in the database
       tags:
       - user
@@ -180,7 +195,6 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/user.CreateRequest'
-          type: object
       produces:
       - application/json
       responses:
@@ -188,7 +202,6 @@ paths:
           description: '{"code":0,"message":"OK","data":{"username":"kong"}}'
           schema:
             $ref: '#/definitions/user.CreateResponse'
-            type: object
       summary: Add new user to the database
       tags:
       - user
@@ -210,7 +223,6 @@ paths:
           description: '{"code":0,"message":"OK","data":null}'
           schema:
             $ref: '#/definitions/handler.Response'
-            type: object
       summary: Delete an user by the user identifier
       tags:
       - user
@@ -230,7 +242,6 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/model.UserModel'
-          type: object
       produces:
       - application/json
       responses:
@@ -238,7 +249,6 @@ paths:
           description: '{"code":0,"message":"OK","data":null}'
           schema:
             $ref: '#/definitions/handler.Response'
-            type: object
       summary: Update a user info by the user identifier
       tags:
       - user
@@ -260,7 +270,6 @@ paths:
           description: '{"code":0,"message":"OK","data":{"username":"kong","password":"$2a$10$E0kwtmtLZbwW/bDQ8qI8e.eHPqhQOW9tvjwpyo/p05f/f4Qvr3OmS"}}'
           schema:
             $ref: '#/definitions/model.UserModel'
-            type: object
       summary: Get an user by the user identifier
       tags:
       - user

@@ -8,7 +8,6 @@
             "url": "http://www.swagger.io/support",
             "email": "466701708@qq.com"
         },
-        "license": {},
         "version": "1.0"
     },
     "host": "localhost:8080",
@@ -27,7 +26,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object"
+                            "type": "string"
                         }
                     },
                     {
@@ -36,7 +35,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object"
+                            "type": "string"
                         }
                     }
                 ],
@@ -162,7 +161,6 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object",
                             "$ref": "#/definitions/user.ListRequest"
                         }
                     }
@@ -171,7 +169,6 @@
                     "200": {
                         "description": "{\"code\":0,\"message\":\"OK\",\"data\":{\"totalCount\":1,\"userList\":[{\"id\":0,\"username\":\"admin\",\"random\":\"user 'admin' get random string 'EnqntiSig'\",\"password\":\"$2a$10$veGcArz47VGj7l9xN7g2iuT9TF21jLI1YGXarGzvARNdnt4inC9PG\",\"createdAt\":\"2018-05-28 00:25:33\",\"updatedAt\":\"2018-05-28 00:25:33\"}]}}",
                         "schema": {
-                            "type": "object",
                             "$ref": "#/definitions/user.SwaggerListResponse"
                         }
                     }
@@ -196,7 +193,6 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object",
                             "$ref": "#/definitions/user.CreateRequest"
                         }
                     }
@@ -205,7 +201,6 @@
                     "200": {
                         "description": "{\"code\":0,\"message\":\"OK\",\"data\":{\"username\":\"kong\"}}",
                         "schema": {
-                            "type": "object",
                             "$ref": "#/definitions/user.CreateResponse"
                         }
                     }
@@ -239,7 +234,6 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "object",
                             "$ref": "#/definitions/model.UserModel"
                         }
                     }
@@ -248,7 +242,6 @@
                     "200": {
                         "description": "{\"code\":0,\"message\":\"OK\",\"data\":null}",
                         "schema": {
-                            "type": "object",
                             "$ref": "#/definitions/handler.Response"
                         }
                     }
@@ -279,7 +272,6 @@
                     "200": {
                         "description": "{\"code\":0,\"message\":\"OK\",\"data\":null}",
                         "schema": {
-                            "type": "object",
                             "$ref": "#/definitions/handler.Response"
                         }
                     }
@@ -312,7 +304,6 @@
                     "200": {
                         "description": "{\"code\":0,\"message\":\"OK\",\"data\":{\"username\":\"kong\",\"password\":\"$2a$10$E0kwtmtLZbwW/bDQ8qI8e.eHPqhQOW9tvjwpyo/p05f/f4Qvr3OmS\"}}",
                         "schema": {
-                            "type": "object",
                             "$ref": "#/definitions/model.UserModel"
                         }
                     }
@@ -327,10 +318,31 @@
                 "code": {
                     "type": "integer"
                 },
-                "data": {
-                    "type": "object"
-                },
+                "data": {},
                 "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.UserInfo": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "sayHello": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "username": {
                     "type": "string"
                 }
             }
@@ -338,15 +350,19 @@
         "model.UserModel": {
             "type": "object",
             "required": [
-                "username",
-                "password"
+                "password",
+                "username"
             ],
             "properties": {
                 "password": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 128,
+                    "minLength": 5
                 },
                 "username": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 32,
+                    "minLength": 1
                 }
             }
         },
@@ -392,7 +408,7 @@
                 "userList": {
                     "type": "array",
                     "items": {
-                        "type": "\u0026{model UserInfo}"
+                        "$ref": "#/definitions/model.UserInfo"
                     }
                 }
             }
