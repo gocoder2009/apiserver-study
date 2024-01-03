@@ -27,17 +27,8 @@ const docTemplate = `{
                 "summary": "Login generates the authentication token",
                 "parameters": [
                     {
-                        "description": "Username",
-                        "name": "username",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
                         "description": "Password",
-                        "name": "user",
+                        "name": "LoginRequest",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -147,7 +138,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/user": {
+        "/v1/user": {
             "get": {
                 "description": "List users",
                 "consumes": [
@@ -213,7 +204,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/user/{id}": {
+        "/v1/user/{id}": {
             "put": {
                 "description": "Update a user by ID",
                 "consumes": [
@@ -284,7 +275,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/user/{username}": {
+        "/v1/user/{username}": {
             "get": {
                 "description": "Get an user by username",
                 "consumes": [
@@ -441,7 +432,7 @@ const docTemplate = `{
     },
     "securityDefinitions": {
         "": {
-            "description": "请在token字符串前加Bearer+空格",
+            "description": "请在token字符串前加` + "`" + `Bearer ` + "`" + `",
             "type": "apiKey",
             "name": "Authorization",
             "in": "header"
