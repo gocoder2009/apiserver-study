@@ -188,6 +188,11 @@ const docTemplate = `{
                 }
             },
             "post": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "Add a new user",
                 "consumes": [
                     "application/json"
@@ -222,6 +227,11 @@ const docTemplate = `{
         },
         "/v1/user/{id}": {
             "put": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "Update a user by ID",
                 "consumes": [
                     "application/json"
@@ -261,6 +271,11 @@ const docTemplate = `{
                 }
             },
             "delete": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "Delete user by ID",
                 "consumes": [
                     "application/json"
@@ -293,6 +308,11 @@ const docTemplate = `{
         },
         "/v1/user/{username}": {
             "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "Get an user by username",
                 "consumes": [
                     "application/json"

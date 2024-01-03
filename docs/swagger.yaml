@@ -206,6 +206,8 @@ paths:
           description: '{"code":0,"message":"OK","data":{"username":"kong"}}'
           schema:
             $ref: '#/definitions/user.CreateResponse'
+      security:
+      - JWT: []
       summary: Add new user to the database
       tags:
       - user
@@ -227,6 +229,8 @@ paths:
           description: '{"code":0,"message":"OK","data":null}'
           schema:
             $ref: '#/definitions/handler.Response'
+      security:
+      - JWT: []
       summary: Delete an user by the user identifier
       tags:
       - user
@@ -253,6 +257,8 @@ paths:
           description: '{"code":0,"message":"OK","data":null}'
           schema:
             $ref: '#/definitions/handler.Response'
+      security:
+      - JWT: []
       summary: Update a user info by the user identifier
       tags:
       - user
@@ -274,6 +280,8 @@ paths:
           description: '{"code":0,"message":"OK","data":{"username":"kong","password":"$2a$10$E0kwtmtLZbwW/bDQ8qI8e.eHPqhQOW9tvjwpyo/p05f/f4Qvr3OmS"}}'
           schema:
             $ref: '#/definitions/model.UserModel'
+      security:
+      - JWT: []
       summary: Get an user by the user identifier
       tags:
       - user

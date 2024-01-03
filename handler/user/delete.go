@@ -13,7 +13,7 @@ import (
 // Delete godoc
 //
 //	@Security		JWT
-//	@Summary		Delete an user by the user identifier
+//	@Summary		Delete a user by the user identifier
 //	@Description	Delete user by ID
 //	@Tags			user
 //	@Accept			json
