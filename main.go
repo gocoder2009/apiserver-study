@@ -37,7 +37,7 @@ var (
 // @securityDefinitions.apikey
 // @in header
 // @name Authorization
-// @description 请在token字符串前加`Bearer `
+// @description 请在token字符串前加`Bearer+空格`
 
 // @host localhost:8080
 // #@BasePath /v1
