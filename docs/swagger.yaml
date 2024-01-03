@@ -48,15 +48,6 @@ definitions:
       username:
         type: string
     type: object
-  user.ListRequest:
-    properties:
-      limit:
-        type: integer
-      offset:
-        type: integer
-      username:
-        type: string
-    type: object
   user.LoginRequest:
     properties:
       password:
@@ -166,17 +157,25 @@ paths:
       tags:
       - sd
   /v1/user:
-    post:
+    get:
       consumes:
       - application/json
-      description: List users
+      description: get users
       parameters:
-      - description: List users
-        in: body
-        name: user
+      - description: username
+        in: query
+        name: username
+        type: string
+      - description: offset
+        in: query
+        name: offset
         required: true
-        schema:
-          $ref: '#/definitions/user.ListRequest'
+        type: integer
+      - description: limit
+        in: query
+        name: limit
+        required: true
+        type: integer
       produces:
       - application/json
       responses:
@@ -187,6 +186,27 @@ paths:
           schema:
             $ref: '#/definitions/user.SwaggerListResponse'
       summary: List the users in the database
+      tags:
+      - user
+    post:
+      consumes:
+      - application/json
+      description: Add a new user
+      parameters:
+      - description: Create a new user
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/user.CreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":0,"message":"OK","data":{"username":"kong"}}'
+          schema:
+            $ref: '#/definitions/user.CreateResponse'
+      summary: Add new user to the database
       tags:
       - user
   /v1/user/{id}:

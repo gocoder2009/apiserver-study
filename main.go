@@ -26,20 +26,20 @@ var (
 	version = pflag.BoolP("version", "v", false, "show version info.")
 )
 
-// @title Apiserver Example API
-// @version 1.0
-// @description apiserver demo
+//	@title			Apiserver Example API
+//	@version		1.0
+//	@description	apiserver demo
 
-// @contact.name lkong
-// @contact.url http://www.swagger.io/support
-// @contact.email 466701708@qq.com
+//	@contact.name	lkong
+//	@contact.url	http://www.swagger.io/support
+//	@contact.email	466701708@qq.com
 
-// @securityDefinitions.apikey
-// @in header
-// @name Authorization
-// @description 请在token字符串前加`Bearer+空格`
+//	@securityDefinitions.apikey
+//	@in				header
+//	@name			Authorization
+//	@description	请在token字符串前加`Bearer+空格`
 
-// @host localhost:8080
+//	@host	localhost:8080
 // #@BasePath /v1
 func main() {
 	pflag.Parse()
