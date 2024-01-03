@@ -9,6 +9,7 @@ buildDate = $(shell TZ=Asia/Shanghai date +%FT%T%z)
 gitCommit = $(shell git log --pretty=format:'%H' -n 1)
 gitTreeState = $(shell if git status|grep -q 'clean';then echo clean; else echo dirty; fi)
 
+# -w 为去掉调试信息（无法使用 gdb 调试），这样可以使编译后的二进制文件更小。
 ldflags="-w -X ${versionDir}.gitTag=${gitTag} -X ${versionDir}.buildDate=${buildDate} -X ${versionDir}.gitCommit=${gitCommit} -X ${versionDir}.gitTreeState=${gitTreeState}"
 
 all: go.tool build
