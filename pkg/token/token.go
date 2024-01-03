@@ -5,14 +5,14 @@ import (
 	"fmt"
 	"time"
 
-	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
+	jwt "github.com/golang-jwt/jwt/v4"
 	"github.com/spf13/viper"
 )
 
 var (
 	// ErrMissingHeader means the `Authorization` header was empty.
-	ErrMissingHeader = errors.New("The length of the `Authorization` header is zero.")
+	ErrMissingHeader = errors.New("the length of the `Authorization` header is zero")
 )
 
 // Context is the context of the JSON web token.
