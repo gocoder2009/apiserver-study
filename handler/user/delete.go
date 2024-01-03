@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Delete
+// Delete godoc
 // @Summary Delete an user by the user identifier
 // @Description Delete user by ID
 // @Tags user

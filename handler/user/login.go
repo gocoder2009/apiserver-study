@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Login
+// Login godoc
 // @Summary Login generates the authentication token
 // @Produce  json
 // @Param LoginRequest body user.LoginRequest true "Password"

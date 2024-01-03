@@ -9,7 +9,7 @@ import (
 	"github.com/gocoder2009/log-for-apiserver"
 )
 
-// List
+// List godoc
 // @Summary List the users in the database
 // @Description List users
 // @Tags user

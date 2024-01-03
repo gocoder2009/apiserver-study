@@ -166,7 +166,7 @@ paths:
       tags:
       - sd
   /v1/user:
-    get:
+    post:
       consumes:
       - application/json
       description: List users
@@ -187,27 +187,6 @@ paths:
           schema:
             $ref: '#/definitions/user.SwaggerListResponse'
       summary: List the users in the database
-      tags:
-      - user
-    post:
-      consumes:
-      - application/json
-      description: Add a new user
-      parameters:
-      - description: Create a new user
-        in: body
-        name: user
-        required: true
-        schema:
-          $ref: '#/definitions/user.CreateRequest'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: '{"code":0,"message":"OK","data":{"username":"kong"}}'
-          schema:
-            $ref: '#/definitions/user.CreateResponse'
-      summary: Add new user to the database
       tags:
       - user
   /v1/user/{id}:
@@ -280,7 +259,7 @@ paths:
       - user
 securityDefinitions:
   "":
-    description: 请在token字符串前加`Bearer `
+    description: 请在token字符串前加`Bearer+空格`
     in: header
     name: Authorization
     type: apiKey

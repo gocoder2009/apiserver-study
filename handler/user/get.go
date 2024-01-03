@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Get
+// Get godoc
 // @Summary Get an user by the user identifier
 // @Description Get an user by username
 // @Tags user

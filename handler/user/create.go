@@ -11,7 +11,7 @@ import (
 	"github.com/gocoder2009/log-for-apiserver/lager"
 )
 
-// Create
+// Create godoc
 // @Summary Add new user to the database
 // @Description Add a new user
 // @Tags user

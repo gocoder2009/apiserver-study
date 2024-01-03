@@ -139,7 +139,7 @@ const docTemplate = `{
             }
         },
         "/v1/user": {
-            "get": {
+            "post": {
                 "description": "List users",
                 "consumes": [
                     "application/json"
@@ -167,38 +167,6 @@ const docTemplate = `{
                         "description": "{\"code\":0,\"message\":\"OK\",\"data\":{\"totalCount\":1,\"userList\":[{\"id\":0,\"username\":\"admin\",\"random\":\"user 'admin' get random string 'EnqntiSig'\",\"password\":\"$2a$10$veGcArz47VGj7l9xN7g2iuT9TF21jLI1YGXarGzvARNdnt4inC9PG\",\"createdAt\":\"2018-05-28 00:25:33\",\"updatedAt\":\"2018-05-28 00:25:33\"}]}}",
                         "schema": {
                             "$ref": "#/definitions/user.SwaggerListResponse"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "description": "Add a new user",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "user"
-                ],
-                "summary": "Add new user to the database",
-                "parameters": [
-                    {
-                        "description": "Create a new user",
-                        "name": "user",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/user.CreateRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{\"code\":0,\"message\":\"OK\",\"data\":{\"username\":\"kong\"}}",
-                        "schema": {
-                            "$ref": "#/definitions/user.CreateResponse"
                         }
                     }
                 }
@@ -432,7 +400,7 @@ const docTemplate = `{
     },
     "securityDefinitions": {
         "": {
-            "description": "请在token字符串前加` + "`" + `Bearer ` + "`" + `",
+            "description": "请在token字符串前加` + "`" + `Bearer+空格` + "`" + `",
             "type": "apiKey",
             "name": "Authorization",
             "in": "header"
