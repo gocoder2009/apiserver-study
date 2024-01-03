@@ -34,8 +34,13 @@ var (
 // @contact.url http://www.swagger.io/support
 // @contact.email 466701708@qq.com
 
+// @securityDefinitions.apikey
+// @in header
+// @name Authorization
+// @description 请在token字符串前加`Bearer `
+
 // @host localhost:8080
-// @BasePath /v1
+// #@BasePath /v1
 func main() {
 	pflag.Parse()
 	if *version {

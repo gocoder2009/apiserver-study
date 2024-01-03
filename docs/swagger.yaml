@@ -1,4 +1,3 @@
-basePath: /v1
 definitions:
   handler.Response:
     properties:
@@ -58,6 +57,18 @@ definitions:
       username:
         type: string
     type: object
+  user.LoginRequest:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  user.LoginResponse:
+    properties:
+      token:
+        type: string
+    type: object
   user.SwaggerListResponse:
     properties:
       totalCount:
@@ -88,17 +99,17 @@ paths:
           type: string
       - description: Password
         in: body
-        name: password
+        name: user
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/user.LoginRequest'
       produces:
       - application/json
       responses:
         "200":
           description: '{"code":0,"message":"OK","data":{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MjgwMTY5MjIsImlkIjowLCJuYmYiOjE1MjgwMTY5MjIsInVzZXJuYW1lIjoiYWRtaW4ifQ.LjxrK9DuAwAzUD8-9v43NzWBN7HXsSLfebw92DKd1JQ"}}'
           schema:
-            type: string
+            $ref: '#/definitions/user.LoginResponse'
       summary: Login generates the authentication token
   /sd/cpu:
     get:
@@ -273,4 +284,10 @@ paths:
       summary: Get an user by the user identifier
       tags:
       - user
+securityDefinitions:
+  "":
+    description: 请在token字符串前加Bearer+空格
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"

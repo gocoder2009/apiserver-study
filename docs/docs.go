@@ -37,11 +37,11 @@ const docTemplate = `{
                     },
                     {
                         "description": "Password",
-                        "name": "password",
+                        "name": "user",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/user.LoginRequest"
                         }
                     }
                 ],
@@ -49,7 +49,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":0,\"message\":\"OK\",\"data\":{\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MjgwMTY5MjIsImlkIjowLCJuYmYiOjE1MjgwMTY5MjIsInVzZXJuYW1lIjoiYWRtaW4ifQ.LjxrK9DuAwAzUD8-9v43NzWBN7HXsSLfebw92DKd1JQ\"}}",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/user.LoginResponse"
                         }
                     }
                 }
@@ -405,6 +405,25 @@ const docTemplate = `{
                 }
             }
         },
+        "user.LoginRequest": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.LoginResponse": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
         "user.SwaggerListResponse": {
             "type": "object",
             "properties": {
@@ -419,6 +438,14 @@ const docTemplate = `{
                 }
             }
         }
+    },
+    "securityDefinitions": {
+        "": {
+            "description": "请在token字符串前加Bearer+空格",
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
     }
 }`
 
@@ -426,7 +453,7 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
 	Host:             "localhost:8080",
-	BasePath:         "/v1",
+	BasePath:         "",
 	Schemes:          []string{},
 	Title:            "Apiserver Example API",
 	Description:      "apiserver demo",
