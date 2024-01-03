@@ -28,3 +28,8 @@ type SwaggerListResponse struct {
 	TotalCount uint64           `json:"totalCount"`
 	UserList   []model.UserInfo `json:"userList"`
 }
+
+type LoginRequest struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}

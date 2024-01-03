@@ -10,6 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Login
 // @Summary Login generates the authentication token
 // @Produce  json
 // @Param username body string true "Username"

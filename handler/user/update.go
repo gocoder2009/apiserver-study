@@ -13,6 +13,7 @@ import (
 	"github.com/gocoder2009/log-for-apiserver/lager"
 )
 
+// Update
 // @Summary Update a user info by the user identifier
 // @Description Update a user by ID
 // @Tags user
