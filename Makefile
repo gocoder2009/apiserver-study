@@ -12,7 +12,7 @@ gitTreeState = $(shell if git status|grep -q 'clean';then echo clean; else echo 
 ldflags="-w -X ${versionDir}.gitTag=${gitTag} -X ${versionDir}.buildDate=${buildDate} -X ${versionDir}.gitCommit=${gitCommit} -X ${versionDir}.gitTreeState=${gitTreeState}"
 
 all: go.tool build
-	@eecho "make all finished."
+	@echo "make all finished."
 build:
 	@go build -v -ldflags ${ldflags} .
 clean:
