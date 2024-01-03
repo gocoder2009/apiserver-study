@@ -1,7 +1,8 @@
 SHELL := /bin/bash
 BASEDIR = $(shell pwd)
 
-# build with verison infos
+# build with version infos
+# 注意其中[-ldflags -X importpath.name=value](https://golang.org/cmd/link)
 versionDir = "apiserver/pkg/version"
 gitTag = $(shell if [ "`git describe --tags --abbrev=0 2>/dev/null`" != "" ];then git describe --tags --abbrev=0; else git log --pretty=format:'%h' -n 1; fi)
 buildDate = $(shell TZ=Asia/Shanghai date +%FT%T%z)
@@ -10,8 +11,8 @@ gitTreeState = $(shell if git status|grep -q 'clean';then echo clean; else echo 
 
 ldflags="-w -X ${versionDir}.gitTag=${gitTag} -X ${versionDir}.buildDate=${buildDate} -X ${versionDir}.gitCommit=${gitCommit} -X ${versionDir}.gitTreeState=${gitTreeState}"
 
-all: go.tool
-	@go build -v -ldflags ${ldflags} .
+all: go.tool build
+	@eecho "make all finished."
 build:
 	@go build -v -ldflags ${ldflags} .
 clean:
