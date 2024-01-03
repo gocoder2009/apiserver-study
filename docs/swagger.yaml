@@ -231,7 +231,7 @@ paths:
             $ref: '#/definitions/handler.Response'
       security:
       - JWT: []
-      summary: Delete an user by the user identifier
+      summary: Delete a user by the user identifier
       tags:
       - user
     put:

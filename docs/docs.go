@@ -286,7 +286,7 @@ const docTemplate = `{
                 "tags": [
                     "user"
                 ],
-                "summary": "Delete an user by the user identifier",
+                "summary": "Delete a user by the user identifier",
                 "parameters": [
                     {
                         "type": "integer",
