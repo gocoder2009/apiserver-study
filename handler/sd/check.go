@@ -18,6 +18,8 @@ const (
 	GB = 1024 * MB
 )
 
+// HealthCheck
+//
 // @Summary		Shows OK as the ping-pong result
 // @Description	Shows OK as the ping-pong result
 // @Tags			sd
@@ -30,6 +32,8 @@ func HealthCheck(c *gin.Context) {
 	c.String(http.StatusOK, "\n"+message)
 }
 
+// DiskCheck
+//
 // @Summary		Checks the disk usage
 // @Description	Checks the disk usage
 // @Tags			sd
@@ -61,6 +65,8 @@ func DiskCheck(c *gin.Context) {
 	c.String(status, "\n"+message)
 }
 
+// CPUCheck
+//
 // @Summary		Checks the cpu usage
 // @Description	Checks the cpu usage
 // @Tags			sd
@@ -91,6 +97,8 @@ func CPUCheck(c *gin.Context) {
 	c.String(status, "\n"+message)
 }
 
+// RAMCheck
+//
 // @Summary		Checks the ram usage
 // @Description	Checks the ram usage
 // @Tags			sd
